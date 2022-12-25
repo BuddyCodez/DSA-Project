@@ -1,0 +1,45 @@
+:root{
+    --bg: black;
+    --clr: white;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+    
+}
+body {
+  background-color: var(--bg);
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  color: var(--clr);
+  
+}
+
+
+header {
+    color: white;
+}
+img {
+    pointer-events: none;
+}
+#text {
+    width: 100vw;
+    height: 100vh;
+    
+}
+.mainText {
+    margin-top: 5vw;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    background-color: var(--bg);
+    color: var(--clr);
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    padding: 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
