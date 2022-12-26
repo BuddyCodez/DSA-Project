@@ -10,7 +10,7 @@ def append(string: str):
     global Str
     Str = string
     stack.append(Str)
-    print(stack)
+    # print(stack)
     return stack
 @eel.expose
 def undo():
@@ -38,4 +38,5 @@ def delete(string):
 
 
 # ! Start the server:
-eel.start('index.html')
+# ? mode='chrome', cmdline_args=['--kiosk'] this for making the app ! full screen 
+eel.start('index.html', mode='chrome', cmdline_args=['--kiosk'] )
