@@ -1,14 +1,15 @@
 function countWords(str) {
-  const arr = str.split(" ");
-  
-  return arr.filter((word) => word == "\n" || word !== "" ).length;
+        str = str.replace(/(^\s*)|(\s*$)/gi,"");
+         str = str.replace(/[ ]{2,}/gi," ");
+         str = str.replace(/ /," ");
+         return str.split(' ').length;
 }
 
 function Change() {
   count = document.getElementById("count");
   val = document.getElementById("text").value;
- count.innerText = countWords(val);
-
+  count.innerText = countWords(val);
+  
 }
 
 function toggleMode() {
@@ -21,12 +22,10 @@ function toggleMode() {
   }
 }
 function HandleValue() {
-  Change();
   val = document.getElementById("text").value;
-
-
   append = eel.append(val)();
   console.log(append);
+  Change();
   // console.log("hello")
 }
 
@@ -36,6 +35,7 @@ async function Undo() {
   if (undo) {
     document.getElementById("text").value = await undo;
   }
+  Change();
 }
 let value = 1;
 window.addEventListener("keypress", (e) => {
@@ -59,7 +59,7 @@ window.addEventListener("keydown", (e) => {
 async function Redo() {
   let redo = await eel.redo()();
   console.log(redo);
-  if (redo.length > 0) {
+  if (redo) {
     document.getElementById("text").value = redo;
   }
   Change();
@@ -77,6 +77,7 @@ const options = {
   ],
 };
 async function Save() {
+  console.log(window);
   fileHandle = await window.showSaveFilePicker(options);
   const writable = await fileHandle.createWritable();
   await writable.write(document.getElementById("text").value);
@@ -95,6 +96,7 @@ async function NewFile() {
   document.getElementById("text").value = "";
   document.getElementById("fname").innerText = "Untitled File";
   document.getElementById("text").disabled = false;
+  document.getElementById("text").placeholder = "Type Here...";
   Change();
 }
 
